@@ -1,0 +1,24 @@
+[
+  {
+    "book": {
+      "title": "book-title-1",
+      "author": "book-author-1",
+      "isbn": 123456789
+    },
+    "stock": {
+      "quantity": 2,
+      "price": "£9.99"
+    }
+  },
+  {
+    "book": {
+      "title": "book-title-2",
+      "author": "book-author-2",
+      "isbn": 987654321
+    },
+    "stock": {
+      "quantity": 10,
+      "price": "£4.44"
+    }
+  }
+]
