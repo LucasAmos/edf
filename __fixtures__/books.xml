@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <row>
+    <book>
+      <title>book-title-1</title>
+      <author>book-author-1</author>
+      <isbn>123456789</isbn>
+    </book>
+    <stock>
+      <quantity>2</quantity>
+      <price>£9.99</price>
+    </stock>
+  </row>
+  <row>
+    <book>
+      <title>book-title-2</title>
+      <author>book-author-2</author>
+      <isbn>987654321</isbn>
+    </book>
+    <stock>
+      <quantity>10</quantity>
+      <price>£4.44</price>
+    </stock>
+  </row>
+</root>

@@ -1,20 +1,21 @@
 import { HTTPRequestClient } from "../types/HTTPRequestClient";
 import { Response } from "../types/Response";
+import xml2js from "xml2js";
 
-export default class RESTClient implements HTTPRequestClient {
-  responseType = Response.json;
+export default class implements HTTPRequestClient {
+  responseType = Response.xml;
   baseUrl: string;
 
   constructor(baseUrl: string) {
     this.baseUrl = baseUrl;
   }
 
-  // must use unknown as the shape of the reponse as the body is unknown
+  // must return unknown as response format is unknown
   async get(url: string): Promise<unknown> {
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    return response.json();
+    return xml2js.parseStringPromise(await response.text());
   }
 }

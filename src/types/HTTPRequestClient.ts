@@ -1,4 +1,8 @@
+import { Response } from "./Response";
+
 export interface HTTPRequestClient {
-  // returns any as the reponse body is unknown
-  get(url: string): Promise<any>;
+  baseUrl: string;
+  responseType: Response;
+  //unknown is used instead of any to ensure reponse payload must be narrowed
+  get(url: string): Promise<unknown>;
 }
