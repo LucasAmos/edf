@@ -12,7 +12,7 @@ export default class implements HTTPRequestClient {
 
   // must return unknown as response format is unknown
   async get(url: string): Promise<unknown> {
-    const response = await fetch(url);
+    const response = await fetch(`${this.baseUrl}/${url}`);
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }

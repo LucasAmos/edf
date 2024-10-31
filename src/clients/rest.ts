@@ -11,7 +11,7 @@ export default class RESTClient implements HTTPRequestClient {
 
   // must use unknown as the shape of the reponse as the body is unknown
   async get(url: string): Promise<unknown> {
-    const response = await fetch(url);
+    const response = await fetch(`${this.baseUrl}/${url}`);
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
