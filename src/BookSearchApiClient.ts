@@ -17,7 +17,7 @@ type RestAPIResponse = {
 
 type XMLAPIResponse = {
   root: {
-    row: {
+    item: {
       book: [{ title: [string]; author: [string]; isbn: [number] }];
       stock: [{ quantity: [number]; price: [string] }];
     }[];
@@ -46,7 +46,7 @@ export default class BookSearchApiClient implements BookApiClient {
         };
       });
     } else if (responseType === Response.xml) {
-      return (response as XMLAPIResponse).root.row.map((item) => {
+      return (response as XMLAPIResponse).root.item.map((item) => {
         return {
           title: item.book[0].title[0],
           author: item.book[0].author[0],
@@ -62,7 +62,7 @@ export default class BookSearchApiClient implements BookApiClient {
   async getBooksByAuthor(authorName: string, limit: number): Promise<Book[]> {
     const format = Response[this.client.responseType];
     const response = await this.client.get(
-      `${this.client.baseUrl}/by-author?q=${authorName}&limit=${limit}&format=${format}`
+      `by-author?q=${authorName}&limit=${limit}&format=${format}`
     );
 
     return this.formatResponse(this.client.responseType, response);
@@ -75,7 +75,7 @@ export default class BookSearchApiClient implements BookApiClient {
     const format = Response[this.client.responseType];
 
     const response = await this.client.get(
-      `${this.client.baseUrl}/by-publisher?q=${publisherName}&limit=${limit}&format=${format}`
+      `by-publisher?q=${publisherName}&limit=${limit}&format=${format}`
     );
     return this.formatResponse(this.client.responseType, response);
   }
